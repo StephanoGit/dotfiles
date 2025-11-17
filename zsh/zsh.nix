@@ -6,7 +6,8 @@
 		enableFastSyntaxHighlighting = true;
 		enableFzfCompletion = true;
 		shellInit = ''
-		    alias c="clear"	
+		    alias c="clear"
+		    eval "$(direnv hook zsh)"
 		'';
 	};
 }
