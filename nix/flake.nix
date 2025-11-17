@@ -25,7 +25,10 @@
 			orientation = "left";
 			persistent-apps = [
 				"/Applications/Ghostty.app"
+				"/Applications/Google Chrome.app"
 				"/System/Applications/Calendar.app"
+				"/Applications/Microsoft Outlook.app"
+				"/Applications/Microsoft Teams.app"
 			];
 		};
 		finder.FXPreferredViewStyle = "clmv";
@@ -34,8 +37,13 @@
         
 	homebrew = {
           enable = true;
-          casks = [ "ghostty"
-	  	"betterdisplay"];
+          casks = [ 
+	  	"ghostty"
+	  	"betterdisplay"
+		"google-chrome"
+		"microsoft-teams"
+		"microsoft-outlook"
+	  ];
           onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
