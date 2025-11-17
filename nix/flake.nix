@@ -92,6 +92,7 @@
             };
           }
 	../zsh/zsh.nix
+	../skhd/skhd.nix
       ];
     };
     
