@@ -1,6 +1,6 @@
 { pkgs, system, inputs, ... }:
 {
-    programs.nvim = {
+    programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;

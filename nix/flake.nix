@@ -88,13 +88,6 @@
 
       users.users.stephano.home = "/Users/stephano";
       home-manager.backupFileExtension = "backup";
-      nix.configureBuildUsers = true;
-      nix.useDaemon = true;
-
-      services.nix-daemon.enable = true;
-
-
-
     };
   in
   {
@@ -123,10 +116,7 @@
           home-manager.users.stephano = import ./home.nix;
         }
 
-
-	../zsh/zsh.nix
-	../skhd/skhd.nix
-	# ../nvim/nvim.nix
+	      ../skhd/skhd.nix
       ];
     };
     
