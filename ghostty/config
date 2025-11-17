@@ -1,0 +1,8 @@
+theme = GruvBox Dark
+
+font-family = "JetBrainsMonoNL NFM Regular"
+font-size = 18
+
+keybind = ctrl+shift+r=reload_config
+keybind = ctrl+shift+up=new_split:up
+
