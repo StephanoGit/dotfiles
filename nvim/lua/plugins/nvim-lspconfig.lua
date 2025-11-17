@@ -17,12 +17,12 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("tinymist")
 vim.lsp.config("tinymist", {
   on_attach = function(_, _)
-    vim.keymap.set("n", "<leader>tp", ":TypstPreviewToggle<CR>", { noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>tp", ":TypstPreviewToggle<CR>", { noremap = true, silent = false})
   end
 })
 
 require("typst-preview").setup({
-  open_cmd = "open -a '/Applications/Google Chrome.app' --app=%s 2>/dev/null"
+  open_cmd = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --app=%s "
 })
 
 
