@@ -9,8 +9,11 @@
 ];
 
 
-  home.packages = [
-
+  home.packages = with pkgs; [
+      lua-language-server
+      pyright
+      tinymist
+      typst
   ];
 
   home.file = {

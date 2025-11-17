@@ -7,7 +7,7 @@
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
         lualine-nvim
-        gruvbox
+        gruvbox-nvim
         telescope-fzf-native-nvim
         nvim-cmp
         cmp-nvim-lsp
@@ -34,6 +34,7 @@
         nvim-surround
         leap-nvim
         typst-vim
+        typst-preview-nvim
       ];
   };
 } 
