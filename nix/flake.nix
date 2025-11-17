@@ -16,9 +16,24 @@
   let
     configuration = { pkgs, config, ... }: {
      
-     	system.primaryUser = "stephano";
-
-        homebrew = {
+     	system = {
+	  primaryUser = "stephano";
+	  defaults = {
+		dock = {
+			autohide = true;
+			autohide-delay = 0.01;
+			autohide-time-modifier = 1.0;
+			orientation = "left";
+			persistent-apps = [
+				"/Applications/Ghostty.app"
+				"/System/Applications/Calendar.app"
+			];
+		};
+		finder.FXPreferredViewStyle = "clmv";
+	  };
+	};
+        
+	homebrew = {
           enable = true;
           casks = [ "ghostty" ];
           onActivation.cleanup = "zap";
