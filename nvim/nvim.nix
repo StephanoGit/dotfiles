@@ -1,19 +1,14 @@
 { pkgs, system, inputs, ... }:
-let unstable = import inputs.nixpkgs-unstable { system = system; };
-in {
-  programs.neovim = {
+{
+    programs.nvim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    plugins = let
-      l1 = with unstable.vimPlugins; [ typst-preview-nvim ];
-      l2 = with pkgs.vimPlugins; [
-        packer-nvim
+    plugins = with pkgs.vimPlugins; [
         lualine-nvim
-        rose-pine
+        gruvbox
         telescope-fzf-native-nvim
-        kanagawa-nvim
         nvim-cmp
         cmp-nvim-lsp
         cmp-nvim-lua
@@ -25,13 +20,9 @@ in {
         nvim-web-devicons
         oil-nvim
         alpha-nvim
-        vimtex
         lazygit-nvim
         vim-fugitive
         rustaceanvim
-        coc-ltex
-        julia-vim
-        typst-vim
         nvim-ufo
         nvim-treesitter.withAllGrammars
         nvim-treesitter-textobjects
@@ -44,7 +35,5 @@ in {
         leap-nvim
         typst-vim
       ];
-    in l1 ++ l2;
   };
-
 } 

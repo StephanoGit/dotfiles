@@ -9,9 +9,15 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";  
+ 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager}:
   let
     configuration = { pkgs, config, ... }: {
      
@@ -79,6 +85,16 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
+
+      users.users.stephano.home = "/Users/stephano";
+      home-manager.backupFileExtension = "backup";
+      nix.configureBuildUsers = true;
+      nix.useDaemon = true;
+
+      services.nix-daemon.enable = true;
+
+
+
     };
   in
   {
@@ -100,9 +116,17 @@
               user = "stephano";
             };
           }
+
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.stephano = import ./home.nix;
+        }
+
+
 	../zsh/zsh.nix
 	../skhd/skhd.nix
-	../nvim/nvim.nix
+	# ../nvim/nvim.nix
       ];
     };
     
