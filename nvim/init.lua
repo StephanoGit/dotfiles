@@ -4,6 +4,8 @@ require("core.colors")
 require("core.options")
 require("core.typst")
 
+require("core.banner")
+
 
 
 -- plugins
