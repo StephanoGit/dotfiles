@@ -6,7 +6,7 @@
     syntaxHighlighting.enable = true;
 
     initContent = ''
-		    eval "$(oh-my-posh init zsh)"
+		    eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
         
         alias c="clear"
         
