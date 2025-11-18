@@ -1,10 +1,14 @@
+{ pkgs, ... }:
 {
 	programs.zsh = {
 		enable = true;
 		autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-		initContent = ''
-		    alias c="clear"
+
+    initContent = ''
+		    eval "$(oh-my-posh init zsh)"
+        
+        alias c="clear"
         
         alias ls="eza --icons always -a"
         alias la="eza --icons always -la"
@@ -12,6 +16,11 @@
 
 		    # eval "$(direnv hook zsh)"
 		'';
-	};
+  };
   programs.fzf.enableZshIntegration = true;
+
+  home.packages = [
+    pkgs.oh-my-posh
+  ];
+
 }
