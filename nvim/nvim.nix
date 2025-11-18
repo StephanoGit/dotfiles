@@ -5,7 +5,11 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    plugins = with pkgs.vimPlugins; [
+    plugins = let
+      l1 = with pkgs; [
+          nixd
+      ];
+      l2 = with pkgs.vimPlugins; [
         lualine-nvim
         gruvbox-nvim
         telescope-fzf-native-nvim
@@ -36,5 +40,6 @@
         typst-vim
         typst-preview-nvim
       ];
+      in l1 ++ l2;
   };
 } 

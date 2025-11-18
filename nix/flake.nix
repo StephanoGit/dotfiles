@@ -35,12 +35,22 @@
 				"/System/Applications/Calendar.app"
 				"/Applications/Microsoft Outlook.app"
 				"/Applications/Microsoft Teams.app"
+				"/Applications/Spotify.app"
 			];
 		};
 		finder.FXPreferredViewStyle = "clmv";
 	  };
 	};
-        
+      power = {
+        sleep = {
+          computer = "never";
+          display = "never";
+        };
+      };
+
+
+
+
 	homebrew = {
           enable = true;
           casks = [ 
@@ -49,6 +59,7 @@
 		"google-chrome"
 		"microsoft-teams"
 		"microsoft-outlook"
+    "spotify"
 	  ];
           onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
@@ -63,12 +74,12 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
-	pkgs.vim
-	pkgs.neovim
+	      pkgs.vim
+	      pkgs.neovim
         pkgs.tmux
-	pkgs.nerd-fonts.jetbrains-mono
-	# pkgs.direnv
-	];
+	      pkgs.nerd-fonts.jetbrains-mono
+	      pkgs.eza
+        ];
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
