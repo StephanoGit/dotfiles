@@ -53,6 +53,7 @@
             sleep = {
               computer = "never";
               display = "never";
+              harddisk = "never";
             };
           };
 
@@ -131,6 +132,7 @@
           }
 
           ../skhd/skhd.nix
+          ../tmux/tmux.nix
         ];
       };
 

@@ -6,7 +6,6 @@ require("core.typst")
 
 require("core.banner")
 
-
-
 -- plugins
 require("plugins.nvim-lspconfig")
+require("plugins.cmp")
