@@ -14,7 +14,7 @@
       pyright
       tinymist
       typst
-      nixd
+      nil
   ];
 
   home.file = {
