@@ -130,9 +130,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.stephano = import ./home.nix;
           }
-
           ../skhd/skhd.nix
-          ../tmux/tmux.nix
         ];
       };
 
