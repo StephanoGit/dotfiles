@@ -66,6 +66,7 @@
               "microsoft-teams"
               "microsoft-outlook"
               "spotify"
+              "nikitabobko/tap/aerospace"
             ];
             onActivation.cleanup = "zap";
             onActivation.autoUpdate = true;
@@ -131,6 +132,7 @@
             home-manager.users.stephano = import ./home.nix;
           }
           ../skhd/skhd.nix
+          ../aerospace/aerospace.nix
         ];
       };
 

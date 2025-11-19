@@ -43,6 +43,7 @@ vim.lsp.config("lua_ls", {
 
 -- grammar checker and typst lsps
 vim.lsp.enable("textlsp")
+
 vim.lsp.enable("tinymist")
 vim.lsp.config("tinymist", {
   on_attach = function(client, bufnr)

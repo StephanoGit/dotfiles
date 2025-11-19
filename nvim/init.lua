@@ -9,3 +9,4 @@ require("core.banner")
 -- plugins
 require("plugins.nvim-lspconfig")
 require("plugins.cmp")
+require("plugins.treesitter")
