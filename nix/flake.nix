@@ -83,6 +83,8 @@
             pkgs.tmux
             pkgs.nerd-fonts.jetbrains-mono
             pkgs.eza
+            pkgs.direnv
+            pkgs.imagemagick
           ];
 
           # Necessary for using flakes on this system.
@@ -110,6 +112,17 @@
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."m4pro" = nix-darwin.lib.darwinSystem {
         modules = [
+          # this is used because direnv installation fails
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                fish = prev.fish.overrideAttrs (old: {
+                  doCheck = false;
+                });
+              })
+            ];
+          }
+
           configuration
           nix-homebrew.darwinModules.nix-homebrew
           {

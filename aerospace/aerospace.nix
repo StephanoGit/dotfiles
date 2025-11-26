@@ -33,8 +33,8 @@
         outer.bottom = 8;
         outer.top = [
           { monitor."built-in" = 12; }
-          { monitor."main" = 46; }
-          46
+          { monitor."main" = 12; }
+          12
         ];
         outer.right = 8;
       };

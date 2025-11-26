@@ -1,3 +1,7 @@
+# custom-shader = ./shaders/tft.glsl
+# custom-shader = ./shaders/bettercrt.glsl
+# custom-shader = ./shaders/bloom.glsl
+
 theme = GruvBox Dark
 
 font-family = "JetBrainsMonoNL NFM Regular"
@@ -5,4 +9,6 @@ font-size = 18
 
 keybind = ctrl+shift+r=reload_config
 keybind = ctrl+shift+up=new_split:up
+keybind = global:cmd+enter=toggle_quick_terminal
 
+macos-titlebar-style = transparent 

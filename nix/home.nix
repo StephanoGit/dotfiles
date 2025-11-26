@@ -14,6 +14,7 @@
     lua-language-server
     pyright
     tinymist
+    typst
     textlsp
     nil
   ];
