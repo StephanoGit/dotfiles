@@ -46,7 +46,7 @@
             zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
           
       sync-dotfiles() {
-          local commit_msg="$\{1:-Update dotfiles: $(date +%Y-%m-%d\ %H:%M)}"
+          local commit_msg="''${1:-Update dotfiles: $(date +%Y-%m-%d\ %H:%M)}"
           
           echo "Syncing .config to dotfiles..."
           rsync -av --exclude=".git" --exclude=".DS_Store" ~/.config/ ~/GitHub/dotfiles/
@@ -64,7 +64,6 @@
           
           cd -
       }
-
     '';
   };
   programs.fzf.enableZshIntegration = true;
