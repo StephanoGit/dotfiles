@@ -13,7 +13,7 @@
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"
-        "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+        "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
       ];
 
       # Notify Sketchybar about focus change
@@ -88,6 +88,11 @@
         alt-shift-5 = "move-node-to-workspace 5 --focus-follows-window";
 
         alt-tab = "workspace-back-and-forth";
+
+        alt-shift-tab = [
+          "move-workspace-to-monitor --wrap-around next"
+          "exec-and-forget sketchybar --trigger aerospace_monitor_change TARGET_MONITOR=$(aerospace list-monitors --focused --format ''%{monitor-appkit-nsscreen-screens-id}') FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)"
+        ];
 
         alt-shift-semicolon = "mode service";
         alt-shift-enter = "mode apps";

@@ -92,6 +92,7 @@
 
           fonts = {
             packages = [
+              pkgs.sketchybar-app-font
               pkgs.jetbrains-mono
               pkgs.nerd-fonts.jetbrains-mono
             ];
