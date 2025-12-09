@@ -7,43 +7,64 @@
     enableCompletion = true;
 
     initContent = ''
-      # Plugins
-      eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
-      eval "$(fzf --zsh)"
-      eval "$(zoxide init --cmd cd zsh)"
-      eval "$(direnv hook zsh)"
-      eval "$(ssh-add ~/.ssh/github-key)"
+            # Plugins
+            eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
+            eval "$(fzf --zsh)"
+            eval "$(zoxide init --cmd cd zsh)"
+            eval "$(direnv hook zsh)"
+            eval "$(ssh-add ~/.ssh/github-key)"
 
 
-      # Aliases
-      alias c="clear"              
-      alias ls="eza --icons always -a"
-      alias la="eza --icons always -la"
-      alias ll="eza --icons always -ll"
+            # Aliases
+            alias c="clear"              
+            alias ls="eza --icons always -a"
+            alias la="eza --icons always -la"
+            alias ll="eza --icons always -ll"
 
-      # Keybindings
-      bindkey -e
-      bindkey '^p' history-search-backward
-      bindkey '^n' history-search-forward
+            # Keybindings
+            bindkey -e
+            bindkey '^p' history-search-backward
+            bindkey '^n' history-search-forward
 
-      # History
-      HISTSIZE=5000
-      HISTFILE=~/.zsh_history
-      SAVEHIST=$HISTSIZE
-      HISTDUP=erase
-      setopt appendhistory
-      setopt sharehistory
-      setopt hist_ignore_space
-      setopt hist_ignore_all_dups
-      setopt hist_save_no_dups
-      setopt hist_ignore_dups
-      setopt hist_find_no_dups
+            # History
+            HISTSIZE=5000
+            HISTFILE=~/.zsh_history
+            SAVEHIST=$HISTSIZE
+            HISTDUP=erase
+            setopt appendhistory
+            setopt sharehistory
+            setopt hist_ignore_space
+            setopt hist_ignore_all_dups
+            setopt hist_save_no_dups
+            setopt hist_ignore_dups
+            setopt hist_find_no_dups
 
-      # Completion styling
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-      zstyle ':completion:*' menu no
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-      zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+            # Completion styling
+            zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+            zstyle ':completion:*' menu no
+            zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+            zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+          
+      sync-dotfiles() {
+          local commit_msg="$\{1:-Update dotfiles: $(date +%Y-%m-%d\ %H:%M)}"
+          
+          echo "Syncing .config to dotfiles..."
+          rsync -av --exclude=".git" --exclude=".DS_Store" ~/.config/ ~/GitHub/dotfiles/
+          
+          cd ~/GitHub/dotfiles
+          
+          if [[ -n $(git status -s) ]]; then
+              git add .
+              git commit -m "$commit_msg"
+              git push origin main
+              echo "✓ Dotfiles synced and pushed!"
+          else
+              echo "No changes to sync"
+          fi
+          
+          cd -
+      }
+
     '';
   };
   programs.fzf.enableZshIntegration = true;
