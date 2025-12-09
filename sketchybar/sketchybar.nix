@@ -4,39 +4,32 @@
     enable = true;
 
     config = ''
-            PLUGIN_DIR="~/.config/sketchybar/plugins"
+      #!/bin/bash
 
-      ##### Bar Appearance #####
-      # Configuring the general appearance of the bar.
-      # These are only some of the options available. For all options see:
-      # https://felixkratz.github.io/SketchyBar/config/bar
-      # If you are looking for other colors, see the color picker:
-      # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+      source ~/.config/sketchybar/colors.sh
 
-      sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
+      PLUGIN_DIR="~/.config/sketchybar/plugins"
 
-      ##### Changing Defaults #####
-      # We now change some default values, which are applied to all further items.
-      # For a full list of all available item properties see:
-      # https://felixkratz.github.io/SketchyBar/config/items
+      sketchybar --bar position=top height=40 color=$BAR_COLOR
 
       default=(
         padding_left=5
         padding_right=5
-        icon.font="JetBrainsMonoNL NFM:Bold:17.0"
+        icon.font="SF Pro:Bold:17.0"
         label.font="JetBrainsMonoNL NFM:Bold:17.0"
-        icon.color=0xffffffff
-        label.color=0xffffffff
-        icon.padding_left=4
+        icon.color=$WHITE
+        label.color=$WHITE
+        icon.padding_left=10
         icon.padding_right=4
         label.padding_left=4
-        label.padding_right=4
+        label.padding_right=10
+        background.color=$ITEM_BG_COLOR
+        background.corner_radius=5
+        background.height=24 
         updates=on
       )
       sketchybar --default "''${default[@]}"
 
-      ##### Adding aeropsace layouts #####
-      # Add the aerospace events we specified in aerospace.toml
       sketchybar --add event aerospace_workspace_change
       sketchybar --add event aerospace_monitor_change
 
@@ -49,23 +42,18 @@
             echo "''${v:-1}"
           )" \
           drawing=off \
-          background.color=0x44ffffff \
+          background.color=$ITEM_BG_COLOR \
           background.corner_radius=5 \
           background.drawing=on \
-          background.border_color=0xAAFFFFFF \
-          background.border_width=0 \
           background.height=25 \
           icon="$sid" \
           icon.padding_left=10 \
           icon.shadow.distance=4 \
-          icon.shadow.color=0xA0000000 \
+          icon.shadow.color=$WHITE \
           label.font="sketchybar-app-font:Regular:16.0" \
           label.padding_right=20 \
           label.padding_left=0 \
           label.y_offset=-1 \
-          label.shadow.drawing=off \
-          label.shadow.color=0xA0000000 \
-          label.shadow.distance=4 \
           click_script="aerospace workspace $sid" \
           script="~/.config/sketchybar/plugins/aerospace.sh $sid"
       done
@@ -90,7 +78,8 @@
       done
 
       sketchybar --add item space_separator left \
-        --set space_separator icon="💩" \
+        --set space_separator icon="" \
+        icon.font="JetBrainsMonoNL NFM:Bold:17.0" \
         icon.padding_left=4 \
         label.drawing=off \
         background.drawing=off \
@@ -100,19 +89,11 @@
       # Front app!!
       sketchybar --add item front_app left \
         --set front_app icon.drawing=off \
-        script="$PLUGIN_DIR/front_app.sh" \
+          label.padding_left=10 \
+          script="$PLUGIN_DIR/front_app.sh" \
         --subscribe front_app front_app_switched
 
       ##### Adding Right Items #####
-      # In the same way as the left items we can add items to the right side.
-      # Additional position (e.g. center) are available, see:
-      # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-      # Some items refresh on a fixed cycle, e.g. the clock runs its script once
-      # every 10s. Other gititems respond to events they subscribe to, e.g. the
-      # volume.sh script is only executed once an actual change in system audio
-      # volume is registered. More info about the event system can be found here:
-      # https://felixkratz.github.io/SketchyBar/config/events
 
       sketchybar --add item clock right \
         --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh" \
@@ -122,14 +103,14 @@
         --add item battery right \
         --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
         --subscribe battery system_woke power_source_change \
-        --add item swap e \
-        --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh" \
-        icon="" \
-        label.font="JetBrainsMonoNL NFM:Bold:13.0" \
-        icon.color=0x44FFFFFF \
-        label.color=0x44FFFFFF
+        # --add item swap e \
+        # --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh" \
+        # icon="" \
+        label.font="SF Pro:Bold:13.0" \
+        icon.color=$WHITE \
+        label.color=$WHITE
 
-      ##### Force all scripts to run the first time (never do this in a script) #####
-      sketchybar --update    '';
+      sketchybar --update    
+    '';
   };
 }

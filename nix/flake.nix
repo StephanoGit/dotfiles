@@ -68,6 +68,7 @@
               "microsoft-outlook"
               "spotify"
               "nikitabobko/tap/aerospace"
+              "font-sf-pro"
             ];
             onActivation.cleanup = "zap";
             onActivation.autoUpdate = true;
