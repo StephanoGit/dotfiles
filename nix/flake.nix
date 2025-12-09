@@ -46,6 +46,7 @@
                   "/Applications/Spotify.app"
                 ];
               };
+              NSGlobalDomain._HIHideMenuBar = true;
               finder.FXPreferredViewStyle = "clmv";
             };
           };
@@ -88,6 +89,7 @@
             pkgs.jankyborders
             pkgs.sketchybar
             pkgs.sketchybar-app-font
+            pkgs.sbarlua
           ];
 
           fonts = {
@@ -156,6 +158,7 @@
           }
           ../skhd/skhd.nix
           ../borders/borders.nix
+          ../sketchybar/sketchybar.nix
           ../aerospace/aerospace.nix
         ];
       };
