@@ -8,6 +8,19 @@
       after-startup-command = [
         "exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0"
       ];
+
+      # Notify Sketchybar about workspace change
+      exec-on-workspace-change = [
+        "/bin/bash"
+        "-c"
+        "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+      ];
+
+      # Notify Sketchybar about focus change
+      on-focus-changed = [
+        "exec-and-forget sketchybar --trigger aerospace_focus_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+      ];
+
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
 

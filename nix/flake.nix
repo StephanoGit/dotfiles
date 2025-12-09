@@ -87,9 +87,6 @@
             pkgs.imagemagick
 
             pkgs.jankyborders
-            pkgs.sketchybar
-            pkgs.sketchybar-app-font
-            pkgs.sbarlua
           ];
 
           fonts = {
@@ -158,7 +155,6 @@
           }
           ../skhd/skhd.nix
           ../borders/borders.nix
-          ../sketchybar/sketchybar.nix
           ../aerospace/aerospace.nix
         ];
       };
