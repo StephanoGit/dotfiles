@@ -84,6 +84,10 @@
             pkgs.eza
             pkgs.direnv
             pkgs.imagemagick
+
+            pkgs.jankyborders
+            pkgs.sketchybar
+            pkgs.sketchybar-app-font
           ];
 
           fonts = {
@@ -151,6 +155,7 @@
             home-manager.users.stephano = import ./home.nix;
           }
           ../skhd/skhd.nix
+          ../borders/borders.nix
           ../aerospace/aerospace.nix
         ];
       };
