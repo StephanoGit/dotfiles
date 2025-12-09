@@ -5,7 +5,8 @@
       			  # Say hello shortcut
               cmd + shift - h : say "I'm VERY hungry Aaron let's get some food ASAP!!!"
       			  cmd + shift - a : say "sugi pula aaron!"
-                      	
+              
+              # Apps shortcuts        	
       			  cmd - g : open -a "/Applications/Ghostty.app"
       			  cmd - m : open -a "/Applications/Spotify.app"
 
