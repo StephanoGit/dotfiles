@@ -6,7 +6,7 @@ local on_attach = function(_, bufnr)
   })
 end
 
-
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, noremap = true, silent = true })
 
 -- inline diagnostic
 vim.diagnostic.config({

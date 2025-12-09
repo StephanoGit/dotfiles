@@ -81,11 +81,17 @@
             pkgs.vim
             pkgs.neovim
             pkgs.tmux
-            pkgs.nerd-fonts.jetbrains-mono
             pkgs.eza
             pkgs.direnv
             pkgs.imagemagick
           ];
+
+          fonts = {
+            packages = [
+              pkgs.jetbrains-mono
+              pkgs.nerd-fonts.jetbrains-mono
+            ];
+          };
 
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";

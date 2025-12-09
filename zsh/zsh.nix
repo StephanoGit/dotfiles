@@ -12,6 +12,8 @@
       eval "$(fzf --zsh)"
       eval "$(zoxide init --cmd cd zsh)"
       eval "$(direnv hook zsh)"
+      eval "$(ssh-add ~/.ssh/github-key)"
+
 
       # Aliases
       alias c="clear"              
