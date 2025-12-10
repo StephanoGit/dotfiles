@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-# make sure it's executable with:
-# chmod +x ~/.config/sketchybar/plugins/aerospace.sh
+source ~/.config/sketchybar/colors.sh
 
-source ~/.config/sketchybar/color.sh
+# if [ -n "$FOCUSED_WORKSPACE" ]; then
+#     current_focused="$FOCUSED_WORKSPACE"
+# else
+#     current_focused=$(aerospace list-workspaces --focused)
+# fi
 
-
-if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set $NAME background.color=$ACCENT_COLOR label.shadow.drawing=on icon.shadow.drawing=on background.border_width=2
+if [ "$1" = "$current_focused" ]; then
+    sketchybar --set $NAME background.color=$RED_COLOR_W background.drawing=on
 else
-  sketchybar --set $NAME background.color=0x44FFFFFF label.shadow.drawing=off icon.shadow.drawing=off background.border_width=0
+    sketchybar --set $NAME background.color=$ITEM_BG_COLOR background.drawing=on
 fi

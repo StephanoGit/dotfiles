@@ -32,10 +32,11 @@
 
       sketchybar --add event aerospace_workspace_change
       sketchybar --add event aerospace_monitor_change
+      sketchybar --add event aerospace_focus_change
 
       for sid in $(aerospace list-workspaces --all); do
         sketchybar --add item space.$sid left \
-          --subscribe space.$sid aerospace_workspace_change \
+          --subscribe space.$sid aerospace_workspace_change aerospace_focus_change \
           --set space.$sid \
           display="$(
             v=$(aerospace list-windows --workspace "$sid" --format "%{monitor-appkit-nsscreen-screens-id}" | cut -c1)
@@ -48,8 +49,6 @@
           background.height=25 \
           icon="$sid" \
           icon.padding_left=10 \
-          icon.shadow.distance=4 \
-          icon.shadow.color=$WHITE \
           label.font="sketchybar-app-font:Regular:16.0" \
           label.padding_right=20 \
           label.padding_left=0 \
@@ -90,6 +89,7 @@
       sketchybar --add item front_app left \
         --set front_app icon.drawing=off \
           label.padding_left=10 \
+          background.drawing=off \
           script="$PLUGIN_DIR/front_app.sh" \
         --subscribe front_app front_app_switched
 
@@ -103,9 +103,9 @@
         --add item battery right \
         --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
         --subscribe battery system_woke power_source_change \
-        # --add item swap e \
-        # --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh" \
-        # icon="" \
+        --add item bluetooth right \
+        --set bluetooth update_freq=5 script="$PLUGIN_DIR/bluetooth.sh" \
+        --subscribe bluetooth system_woke
         label.font="SF Pro:Bold:13.0" \
         icon.color=$WHITE \
         label.color=$WHITE

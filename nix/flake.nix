@@ -89,6 +89,7 @@
 
             pkgs.jankyborders
             pkgs.sketchybar
+            pkgs.blueutil
           ];
 
           fonts = {
