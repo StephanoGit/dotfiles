@@ -43,12 +43,12 @@
       };
 
       gaps = {
-        inner.horizontal = 8;
-        inner.vertical = 8;
+        inner.horizontal = 10;
+        inner.vertical = 10;
         outer.left = 8;
         outer.bottom = 8;
         outer.top = [
-          { monitor."built-in" = 12; }
+          { monitor."built-in" = 16; }
           { monitor."main" = 24; }
           48
         ];

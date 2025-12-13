@@ -7,8 +7,17 @@ theme = GruvBox Dark
 font-family = "JetBrainsMonoNL NFM Regular"
 font-size = 18
 
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+
+
 keybind = ctrl+shift+r=reload_config
 keybind = ctrl+shift+up=new_split:up
+keybind = ctrl+shift+down=new_split:down
+keybind = ctrl+shift+left=new_split:left
+keybind = ctrl+shift+right=new_split:right
 keybind = global:cmd+enter=toggle_quick_terminal
 
 macos-titlebar-style = transparent 
