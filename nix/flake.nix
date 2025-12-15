@@ -43,7 +43,7 @@
                   "/System/Applications/Calendar.app"
                   "/Applications/Microsoft Outlook.app"
                   "/Applications/Microsoft Teams.app"
-                  "/Applications/Spotify.app"
+                  # "/Applications/Spotify.app"
                 ];
               };
               NSGlobalDomain._HIHideMenuBar = true;
@@ -90,6 +90,7 @@
             pkgs.jankyborders
             pkgs.sketchybar
             pkgs.blueutil
+            pkgs.lazygit
           ];
 
           fonts = {

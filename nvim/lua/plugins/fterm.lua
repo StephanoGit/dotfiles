@@ -1,8 +1,8 @@
 require('FTerm').setup({
   border = 'double',
   dimensions = {
-    height = 0.4,
-    width = 0.5,
+    height = 0.6,
+    width = 0.75,
   },
 })
 

@@ -20,6 +20,7 @@
                   alias ls="eza --icons always -a"
                   alias la="eza --icons always -la"
                   alias ll="eza --icons always -ll"
+                  alias lg="lazygit"
 
                   # Keybindings
                   bindkey -e
