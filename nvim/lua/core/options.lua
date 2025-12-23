@@ -4,4 +4,6 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.spell = true
 vim.opt.spelllang = "en_gb"
 
+vim.opt.showcmd = true
+
 vim.opt.termguicolors = true
