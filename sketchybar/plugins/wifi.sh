@@ -24,7 +24,7 @@ if [ "$WIFI_STATE" = "On" ]; then
   else
     # WiFi on but not connected
     # LABEL="Searching"
-    ICON="󰖪"
+    ICON="󱚵"
     COLOR=$YELLOW_COLOR_W
   fi
 else

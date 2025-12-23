@@ -43,6 +43,7 @@
                   "/System/Applications/Calendar.app"
                   "/Applications/Microsoft Outlook.app"
                   "/Applications/Microsoft Teams.app"
+                  "/Applications/Discord.app"
                   # "/Applications/Spotify.app"
                 ];
               };
@@ -69,6 +70,7 @@
               "spotify"
               "nikitabobko/tap/aerospace"
               "font-sf-pro"
+              "discord"
             ];
             onActivation.cleanup = "zap";
             onActivation.autoUpdate = true;
