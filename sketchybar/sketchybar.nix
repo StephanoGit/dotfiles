@@ -105,7 +105,14 @@
         --subscribe battery system_woke power_source_change \
         --add item bluetooth right \
         --set bluetooth update_freq=5 script="$PLUGIN_DIR/bluetooth.sh" \
-        --subscribe bluetooth system_woke
+          label.drawing=off \
+          icon.padding_right=10 \
+        --subscribe bluetooth system_woke \
+        --add item wifi right \
+        --set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
+          label.drawing=off \
+          icon.padding_right=10 \
+        --subscribe wifi system_woke \
         label.font="SF Pro:Bold:13.0" \
         icon.color=$WHITE \
         label.color=$WHITE

@@ -48,5 +48,4 @@ fi
 # Update Sketchybar
 sketchybar --set "$NAME" \
   icon="$ICON" \
-  label="$LABEL" \
   background.color=$COLOR \
