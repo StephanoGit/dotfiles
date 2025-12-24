@@ -1,12 +1,3 @@
-vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>")
-
--- In your main init.lua or keymaps file
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right window' })
-
-vim.keymap.set('n', '<leader>fe', ':Neotree reveal<CR>', { desc = 'Reveal file in explorer', silent = true })
-
-
 require("neo-tree").setup({
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "NC",   -- or "" to use 'winborder' on Neovim v0.11+
