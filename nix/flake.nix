@@ -71,6 +71,7 @@
               "nikitabobko/tap/aerospace"
               "font-sf-pro"
               "discord"
+              "steam"
             ];
             onActivation.cleanup = "zap";
             onActivation.autoUpdate = true;

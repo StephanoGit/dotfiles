@@ -46,6 +46,7 @@
         leap-nvim
         typst-vim
         typst-preview-nvim
+        vim-be-good
       ])
       ++ (with pkgs.luajitPackages; [
         magick
