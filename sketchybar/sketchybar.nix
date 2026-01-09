@@ -109,7 +109,7 @@
           icon.padding_right=10 \
         --subscribe bluetooth system_woke \
         --add item wifi right \
-        --set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
+        --set wifi update_freq=2 script="$PLUGIN_DIR/wifi.sh" \
           label.drawing=off \
           icon.padding_right=10 \
         --subscribe wifi system_woke \
