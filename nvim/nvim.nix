@@ -10,6 +10,11 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+
+    extraPackages = with pkgs; [
+      nodejs_24
+    ];
+
     plugins =
       (with pkgs.vimPlugins; [
         lualine-nvim
@@ -47,6 +52,10 @@
         typst-vim
         typst-preview-nvim
         vim-be-good
+        sidekick-nvim
+        copilot-lua
+        copilot-lsp
+        copilot-lualine
       ])
       ++ (with pkgs.luajitPackages; [
         magick

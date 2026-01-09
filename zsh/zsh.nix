@@ -7,6 +7,7 @@
     enableCompletion = true;
 
     initContent = ''
+
                   # Plugins
                   eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
                   eval "$(fzf --zsh)"
@@ -63,7 +64,7 @@
           
           # Then sync to dotfiles repo
           echo "Syncing .config to dotfiles..."
-          rsync -av --exclude=".git" --exclude=".DS_Store" ~/.config/ ~/GitHub/dotfiles/
+          rsync -av --exclude=".git" --exclude=".DS_Store" --exclude="github-copilot/" ~/.config/ ~/GitHub/dotfiles/
           
           cd ~/GitHub/dotfiles
           

@@ -41,6 +41,16 @@ vim.lsp.config("lua_ls", {
   }
 })
 
+-- copilot
+vim.lsp.enable('copilot')
+vim.lsp.config('copilot', {
+  on_attach = on_attach,
+})
+
+
+
+
+
 -- grammar checker and typst lsps
 vim.lsp.enable("textlsp")
 

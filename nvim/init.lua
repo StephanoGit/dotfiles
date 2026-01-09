@@ -3,7 +3,6 @@ require("core.keymaps")
 require("core.colors")
 require("core.options")
 require("core.typst")
-
 require("core.banner")
 
 -- plugins
@@ -17,4 +16,6 @@ require("plugins.noice")
 require("plugins.fterm")
 require("plugins.notify")
 require("plugins.lazy-git")
+require("plugins.copilot")
+require("plugins.sidekick")
 -- require("plugins.image")
