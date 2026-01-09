@@ -94,6 +94,8 @@
             pkgs.sketchybar
             pkgs.blueutil
             pkgs.lazygit
+
+            pkgs.gemini-cli
           ];
 
           fonts = {
