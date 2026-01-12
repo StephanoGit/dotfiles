@@ -53,7 +53,7 @@
           };
           power = {
             sleep = {
-              computer = "never";
+              # computer = "never";
               display = "never";
               harddisk = "never";
             };
