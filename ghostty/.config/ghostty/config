@@ -20,4 +20,4 @@ macos-titlebar-style = transparent
 
 
 bell-features = audio
-bell-audio-path = ~/dotfiles/ghostty/.config/ghostty/config
+bell-audio-path = ~/dotfiles/ghostty/.config/ghostty/fah.mp3
