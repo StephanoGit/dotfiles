@@ -2,6 +2,12 @@
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR='nvim'
 
+# SSH Agent Auto-Start
+if [ -z "$SSH_AUTH_SOCK" ]; then
+   eval "$(ssh-agent -s)" > /dev/null
+   ssh-add ~/.ssh/id_ed25519 2>/dev/null
+fi
+
 
 autoload -Uz compinit
 compinit
