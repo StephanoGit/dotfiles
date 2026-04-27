@@ -1,5 +1,16 @@
 after-startup-command = ['exec-and-forget ~/.config/borders/bordersrc']
 
+on-focus-changed = [
+  "exec-and-forget osascript -e 'tell application \"a-bar\" to refresh \"aerospace\"'",
+]
+
+exec-on-workspace-change = [
+  '/bin/zsh',
+  '-c',
+  '/usr/bin/osascript -e "tell application \"a-bar\" to refresh \"aerospace\""',
+]
+
+
 # ── Float specific apps ───────────────────────────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -19,8 +30,19 @@ inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
 outer.right = 8
-outer.top = 8
 outer.bottom = 8
+outer.top = [
+  {monitor."built-in" = 18},
+  50
+]
+
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'built-in'
+5 = 'built-in'
 
 # ── Key bindings ──────────────────────────────────────────────────────────────
 [mode.main.binding]
@@ -36,16 +58,9 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
-# Move to screen quarters (U=top-left, I=top-right, J=bottom-left, K=bottom-right)
-# alt-u = 'move-mouse-cursor-force-click'  # placeholder — see note below
-alt-u = ['move-node-to-monitor left',  'layout tiling']
-
-# Snap to halves (H=left half, L=right half)
-alt-shift-y = 'join-with left'
-alt-shift-p = 'join-with right'
 
 # Fullscreen & float
-alt-f = 'fullscreen'
+alt-shift-f = 'fullscreen'
 alt-shift-space = 'layout floating tiling'
 
 # Workspaces
@@ -53,14 +68,19 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
 
 # Resize
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
+
+alt-left = "workspace prev"
+alt-right = "workspace next"
 
 # Reload
 alt-shift-r = 'reload-config'

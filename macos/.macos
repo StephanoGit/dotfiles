@@ -16,6 +16,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # ── Dock & Menu Bar ───────────────────────────────────────────────────────────
 
+# Automatically hide the menu bar (Top Bar)
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 # Remove all default apps from Dock
 defaults write com.apple.dock persistent-apps -array
 
@@ -183,6 +186,7 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
 # Disable remote login (SSH)
 # sudo systemsetup -setremotelogin off 2>/dev/null
+sudo systemsetup -setremotelogin on 
 
 # Lock screen after 5 minutes of inactivity
 defaults -currentHost write com.apple.screensaver idleTime -int 300

@@ -4,6 +4,7 @@
 tap "anomalyco/tap" 
 tap "nikitabobko/tap"
 tap "FelixKratz/formulae"
+tap "Jean-Tinland/a-bar"
 
 # ── Terminal & Shell ──────────────────────────────────────────────────────────
 cask "ghostty"                 # Terminal emulator
@@ -14,6 +15,7 @@ brew "atuin"                   # Shell history search (SQLite, syncable)
 brew "bat"                     # cat with syntax highlighting
 brew "zellij"                  # Modern tmux alternative
 brew "poppler"
+brew "stow"
 
 # ── Neovim ────────────────────────────────────────────────────────────────────
 brew "neovim"
@@ -61,7 +63,9 @@ brew "ffmpeg"                  # Video/audio processing
 # ── Display & WM ──────────────────────────────────────────────────────────────
 cask "betterdisplay"
 cask "nikitabobko/tap/aerospace"  # i3-style tiling window manager for macOS
+cask "jean-tinland/a-bar/a-bar"
 brew "FelixKratz/formulae/borders"
+
 
 # ── Communication ─────────────────────────────────────────────────────────────
 cask "discord"
