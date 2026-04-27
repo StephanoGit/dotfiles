@@ -78,6 +78,7 @@ alias la="eza --icons always -la"
 alias ll="eza --icons always -ll"
 alias lg="lazygit"
 alias v="nvim"
+alias vim="nvim"
 
 # --- 7. Hooks ---
 # Ghostty Terminal Bell Hook for failed commands

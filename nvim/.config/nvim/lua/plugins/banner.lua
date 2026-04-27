@@ -28,12 +28,16 @@ return {
 
     -- Menu Buttons
     dashboard.section.buttons.val = {
-      dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-      dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
+      -- dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+      -- dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
       dashboard.button("r", "  > Recent files", ":Telescope oldfiles<CR>"),
-      dashboard.button("n", "  > PhD Notes", ":e $HOME/Documents/PhD/Notes <CR>"),
-      dashboard.button("v", "  > NeoVim .config", ":e $HOME/.config/nvim <CR>"),
-      dashboard.button("c", "󰀶  > PopOS .config", ":e $HOME/.config <CR>"),
+      dashboard.button("g", "  > Live grep", ":Telescope live_grep<CR>"),
+      dashboard.button("s", "  > Git status", ":LazyGit <CR>"),
+      dashboard.button("n", "  > PhD Notes",
+        ":lua require('yazi').yazi(nil, vim.fn.expand('$HOME/PhD/Notes'))<CR>"),
+      dashboard.button("v", "  > NeoVim .config",
+        ":lua require('yazi').yazi(nil, vim.fn.expand('$HOME/dotfiles/nvim/.config/nvim'))<CR>"),
+      dashboard.button("c", "󰀶  > PopOS .config", ":lua require('yazi').yazi(nil, vim.fn.expand('$HOME/dotfiles'))<CR>"),
       dashboard.button("q", "  > Quit NeoVim", ":qa<CR>"),
     }
 
