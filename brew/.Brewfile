@@ -1,8 +1,9 @@
 # ~/.Brewfile
 
 # ── Taps ──────────────────────────────────────────────────────────────────────
-tap "anomalyco/tap"
+tap "anomalyco/tap" 
 tap "nikitabobko/tap"
+tap "FelixKratz/formulae"
 
 # ── Terminal & Shell ──────────────────────────────────────────────────────────
 cask "ghostty"                 # Terminal emulator
@@ -12,6 +13,7 @@ brew "fzf"                     # Fuzzy finder
 brew "atuin"                   # Shell history search (SQLite, syncable)
 brew "bat"                     # cat with syntax highlighting
 brew "zellij"                  # Modern tmux alternative
+brew "poppler"
 
 # ── Neovim ────────────────────────────────────────────────────────────────────
 brew "neovim"
@@ -40,6 +42,7 @@ brew "rustup"
 brew "go"
 brew "uv"                      # Fast Python package/project manager
 brew "deno"                    # JS/TS scripting outside Node
+brew "typst"
 
 # ── AI ────────────────────────────────────────────────────────────────────────
 brew "anomalyco/tap/opencode"
@@ -58,6 +61,7 @@ brew "ffmpeg"                  # Video/audio processing
 # ── Display & WM ──────────────────────────────────────────────────────────────
 cask "betterdisplay"
 cask "nikitabobko/tap/aerospace"  # i3-style tiling window manager for macOS
+brew "FelixKratz/formulae/borders"
 
 # ── Communication ─────────────────────────────────────────────────────────────
 cask "discord"

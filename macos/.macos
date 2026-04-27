@@ -1,0 +1,234 @@
+
+#!/usr/bin/env bash
+# ~/.macos — macOS system defaults
+# Run: bash ~/.macos
+# Some changes require a logout/restart to take effect.
+
+echo "Applying macOS defaults..."
+
+# Close System Preferences to avoid overriding changes
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for sudo upfront
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+# ── Dock & Menu Bar ───────────────────────────────────────────────────────────
+
+# Remove all default apps from Dock
+defaults write com.apple.dock persistent-apps -array
+
+# Set Dock icon size
+defaults write com.apple.dock tilesize -int 64
+
+# Auto-hide Dock
+defaults write com.apple.dock autohide -bool true
+
+# Remove Dock auto-hide delay
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0.2
+
+# Don't show recent apps in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Minimise windows using scale effect (faster than genie)
+defaults write com.apple.dock mineffect -string "scale"
+
+# Don't minimise windows into application icon
+defaults write com.apple.dock minimize-to-application -bool false
+
+# Show indicator lights for open applications
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Speed up Mission Control animation
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
+# Show battery percentage in menu bar
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+
+# 24-hour clock in menu bar
+defaults write com.apple.menuextra.clock Show24Hour -bool true
+
+# Show date in menu bar
+defaults write com.apple.menuextra.clock ShowDate -int 1
+
+
+# ── Finder ────────────────────────────────────────────────────────────────────
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Show hidden files
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Show path bar at bottom
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Default to column view
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Keep folders on top when sorting
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Default search scope: current folder
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Disable the warning when changing file extensions
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Disable warning when emptying trash
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# Show ~/Library in Finder
+chflags nohidden ~/Library
+
+# Show /Volumes
+sudo chflags nohidden /Volumes
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Set sidebar icon size to medium
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+
+# New Finder window shows home folder
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
+
+# ── Keyboard & Mouse ──────────────────────────────────────────────────────────
+
+# Disable press-and-hold for keys (enables key repeat)
+# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Fast key repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+# Short delay until key repeat starts
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# Enable Tab in modal dialogs
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Disable autocorrect
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable auto-capitalisation
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Disable smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable smart quotes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Disable automatic period substitution
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Trackpad: enable tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Trackpad: increase tracking speed
+defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2.5
+
+
+# ── Screenshots ───────────────────────────────────────────────────────────────
+
+# Save screenshots to ~/Desktop/Screenshots
+mkdir -p "${HOME}/Desktop/Screenshots"
+defaults write com.apple.screencapture location -string "${HOME}/Desktop/Screenshots"
+
+# Save as PNG
+defaults write com.apple.screencapture type -string "png"
+
+# Disable screenshot shadow
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Include date in screenshot filename
+defaults write com.apple.screencapture include-date -bool true
+
+
+# ── Mission Control & Spaces ──────────────────────────────────────────────────
+
+# Don't auto-rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Group windows by application in Mission Control
+defaults write com.apple.dock expose-group-apps -bool true
+
+# Don't switch to a Space with open windows for an application when switching
+defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool false
+
+# Displays have separate Spaces (required for AeroSpace per-display workspaces)
+defaults write com.apple.spaces spans-displays -bool false
+
+
+# ── Security & Privacy ────────────────────────────────────────────────────────
+
+# Require password immediately after sleep or screensaver
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Enable firewall
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+
+# Enable stealth mode (don't respond to ping)
+# sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
+
+# Disable remote login (SSH)
+# sudo systemsetup -setremotelogin off 2>/dev/null
+
+# Lock screen after 5 minutes of inactivity
+defaults -currentHost write com.apple.screensaver idleTime -int 300
+
+
+# ── Dev-friendly tweaks ───────────────────────────────────────────────────────
+
+# Show full URL in Safari address bar
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+# Disable Gatekeeper (allows apps from anywhere — re-enable if you want)
+# sudo spctl --master-disable
+
+# Increase the window resize speed for Cocoa applications
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Disable the "Are you sure you want to open this application?" dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Disable crash reporter
+defaults write com.apple.CrashReporter DialogType -string "none"
+
+# Disable disk image verification
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+# Enable text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Show ~/bin in PATH (if you have one)
+# export PATH="$HOME/bin:$PATH"
+
+
+# ── Apply Changes ─────────────────────────────────────────────────────────────
+
+for app in "Dock" "Finder" "SystemUIServer" "cfprefsd"; do
+  killall "${app}" &>/dev/null
+done
+
+echo "Done. Some changes require a logout or restart to take effect."
