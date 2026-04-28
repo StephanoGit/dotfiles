@@ -11,6 +11,7 @@ exec-on-workspace-change = [
 ]
 
 
+
 # ── Float specific apps ───────────────────────────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -23,6 +24,7 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.ActivityMonitor'
 run = 'layout floating'
+
 
 # ── Gaps ──────────────────────────────────────────────────────────────────────
 [gaps]
@@ -81,6 +83,12 @@ alt-shift-equal = 'resize smart +50'
 
 alt-left = "workspace prev"
 alt-right = "workspace next"
+
+
+alt-cmd-b = 'exec-and-forget open -a "/Applications/Google Chrome.app"'
+alt-cmd-g = 'exec-and-forget open -a "/Applications/Ghostty.app"'
+alt-cmd-m = 'exec-and-forget open -n -a "Google Chrome" --args --app="https://open.spotify.com"'
+
 
 # Reload
 alt-shift-r = 'reload-config'
